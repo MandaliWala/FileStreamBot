@@ -19,7 +19,7 @@ class Telegram:
     FILE_PIC = env.get('FILE_PIC', "https://graph.org/file/5bb9935be0229adf98b73.jpg")
     START_PIC = env.get('START_PIC', "")
     VERIFY_PIC = env.get('VERIFY_PIC', "")
-    MULTI_CLIENT = True
+    MULTI_CLIENT = False
     FLOG_CHANNEL = int(env.get("FLOG_CHANNEL", "-1002137528664"))   # Logs channel for file logs
     ULOG_CHANNEL = int(env.get("ULOG_CHANNEL", "-1002137528664"))   # Logs channel for user logs
     MODE = env.get("MODE", "primary")
