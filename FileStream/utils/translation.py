@@ -14,13 +14,13 @@ class LANG(object):
 <b>- sᴇɴᴅ ᴍᴇ ᴀɴʏ ᴅᴏᴄᴜᴍᴇɴᴛ ᴏʀ ᴍᴇᴅɪᴀ</b>
 <b>- ɪ'ʟʟ ᴘʀᴏᴠɪᴅᴇ sᴛʀᴇᴀᴍᴀʙʟᴇ ʟɪɴᴋ</b>\n
 <b>🔞 ᴀᴅᴜʟᴛ ᴄᴏɴᴛᴇɴᴛ sᴛʀɪᴄᴛʟʏ ᴘʀᴏʜɪʙɪᴛᴇᴅ.</b>\n
-<i><b> ʀᴇᴘᴏʀᴛ ʙᴜɢs ᴛᴏ <a href='https://telegram.me/AvishkarPatil'>ᴅᴇᴠᴇʟᴏᴘᴇʀ</a></b></i>"""
+<i><b> ʀᴇᴘᴏʀᴛ ʙᴜɢs ᴛᴏ <a href='https://telegram.me/Spider_Man_02'>ᴅᴇᴠᴇʟᴏᴘᴇʀ</a></b></i>"""
 
     ABOUT_TEXT = """
 <b>⚜ ᴍʏ ɴᴀᴍᴇ : {}</b>\n
 <b>✦ ᴠᴇʀsɪᴏɴ : {}</b>
 <b>✦ ᴜᴘᴅᴀᴛᴇᴅ ᴏɴ : 06-January-2024</b>
-<b>✦ ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://telegram.me/AvishkarPatil'>Avishkar Patil</a></b>\n
+<b>✦ ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://telegram.me/Spider_Man_02'>𝑷𝒆𝒕𝒆𝒓 𝑷𝒂𝒓𝒌𝒆𝒓 🕸️</a></b>\n
 """
 
     STREAM_TEXT = """
