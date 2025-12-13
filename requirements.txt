@@ -1,5 +1,5 @@
 aiohttp
-pyrofork
+pyrofork[fast]==2.3.45
 python-dotenv
 tgcrypto
 motor
