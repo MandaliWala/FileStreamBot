@@ -56,7 +56,7 @@ async def start_services():
             spec = importlib.util.spec_from_file_location(import_path, plugins_dir)
             load = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(load)
-            sys.modules["biisal.bot.plugins." + plugin_name] = load
+            sys.modules["FileStream.bot.plugins." + plugin_name] = load
             print("Imported => " + plugin_name)
     print("---------------------- Initializing Clients ----------------------")
     await initialize_clients()
