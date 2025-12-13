@@ -1,8 +1,10 @@
 import sys
+import glob
 import asyncio
 import logging
 import traceback
 import logging.handlers as handlers
+from pathlib import Path
 from FileStream.config import Telegram, Server
 from aiohttp import web
 from pyrogram import idle
@@ -22,8 +24,9 @@ logging.getLogger("aiohttp").setLevel(logging.ERROR)
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 logging.getLogger("aiohttp.web").setLevel(logging.ERROR)
 
-server = web.AppRunner(web_server())
-
+ppath = "FileStream/bot/plugins/*.py"
+files = glob.glob(ppath)
+FileStream.start()
 loop = asyncio.get_event_loop()
 
 async def start_services():
@@ -36,18 +39,30 @@ async def start_services():
     print("-------------------- Initializing Telegram Bot --------------------")
 
 
-    await FileStream.start()
     bot_info = await FileStream.get_me()
     FileStream.id = bot_info.id
     FileStream.username = bot_info.username
     FileStream.fname=bot_info.first_name
     print("------------------------------ DONE ------------------------------")
     print()
+    print('--------------------------- Importing ---------------------------')
+    for name in files:
+        with open(name) as a:
+            patt = Path(a.name)
+            plugin_name = patt.stem.replace(".py", "")
+            plugins_dir = Path(f"biisal/bot/plugins/{plugin_name}.py")
+            import_path = ".plugins.{}".format(plugin_name)
+            spec = importlib.util.spec_from_file_location(import_path, plugins_dir)
+            load = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(load)
+            sys.modules["biisal.bot.plugins." + plugin_name] = load
+            print("Imported => " + plugin_name)
     print("---------------------- Initializing Clients ----------------------")
     await initialize_clients()
     print("------------------------------ DONE ------------------------------")
     print()
     print("--------------------- Initializing Web Server ---------------------")
+    server = web.AppRunner(await web_server())
     await server.setup()
     await web.TCPSite(server, Server.BIND_ADDRESS, Server.PORT).start()
     print("------------------------------ DONE ------------------------------")
