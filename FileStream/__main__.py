@@ -16,10 +16,8 @@ from FileStream.bot.clients import initialize_clients
 
 logging.basicConfig(
     level=logging.INFO,
-    datefmt="%d/%m/%Y %H:%M:%S",
-    format='[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s',
-    handlers=[logging.StreamHandler(stream=sys.stdout),
-              handlers.RotatingFileHandler("streambot.log", mode="a", maxBytes=104857600, backupCount=2, encoding="utf-8")],)
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
 
 logging.getLogger("aiohttp").setLevel(logging.ERROR)
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
@@ -79,10 +77,6 @@ async def start_services():
     except Exception as e:
         print(f'got this err to send restart msg to owner : {e}')
     await idle()
-
-async def cleanup():
-    await server.cleanup()
-    await FileStream.stop()
 
 if __name__ == '__main__':
     try:
