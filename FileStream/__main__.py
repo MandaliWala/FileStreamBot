@@ -79,14 +79,8 @@ async def cleanup():
     await server.cleanup()
     await FileStream.stop()
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     try:
         loop.run_until_complete(start_services())
     except KeyboardInterrupt:
-        pass
-    except Exception as err:
-        logging.error(traceback.format_exc())
-    finally:
-        loop.run_until_complete(cleanup())
-        loop.stop()
-        print("------------------------ Stopped Services ------------------------")
+        logging.info('----------------------- Service Stopped -----------------------')
