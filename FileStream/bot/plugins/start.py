@@ -3,7 +3,7 @@ import math
 from FileStream import __version__
 from FileStream.bot import FileStream
 from FileStream.server.exceptions import FIleNotFound
-from FileStream.utils.bot_utils import gen_linkx, verify_user
+from FileStream.utils.bot_utils import gen_linkx, verify_user, is_user_exist
 from FileStream.config import Telegram
 from FileStream.utils.database import Database
 from FileStream.utils.translation import LANG, BUTTON
