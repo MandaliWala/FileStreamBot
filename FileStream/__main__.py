@@ -73,6 +73,10 @@ async def start_services():
         print("                        DC ID =>> {}".format(str(bot_info.dc_id)))
     print(" URL =>> {}".format(Server.URL))
     print("------------------------------------------------------------------")
+    try: 
+        await StreamBot.send_message(chat_id=Telegram.OWNER_ID[0] ,text='<b>ᴊᴀɪ sʜʀᴇᴇ ᴋʀɪsʜɴᴀ 😎\nʙᴏᴛ ʀᴇsᴛᴀʀᴛᴇᴅ !!</b>')
+    except Exception as e:
+        print(f'got this err to send restart msg to owner : {e}')
     await idle()
 
 async def cleanup():
