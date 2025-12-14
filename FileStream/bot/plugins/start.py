@@ -81,12 +81,6 @@ async def start(bot, message):
 
 @FileStream.on_message(filters.private & filters.command(["about"]))
 async def about_handler(bot, message):
-    if not await db.get_user(message.from_user.id):
-        await db.add_user(message.from_user.id)
-        await bot.send_message(
-            Telegram.ULOG_CHANNEL,
-            f"**#NᴇᴡUsᴇʀ**\n**⬩ ᴜsᴇʀ ɴᴀᴍᴇ :** [{message.from_user.first_name}](tg://user?id={message.from_user.id})\n**⬩ ᴜsᴇʀ ɪᴅ :** `{message.from_user.id}`"
-        )
     if Telegram.START_PIC:
         await message.reply_photo(
             photo=Telegram.START_PIC,
@@ -103,12 +97,6 @@ async def about_handler(bot, message):
 
 @FileStream.on_message((filters.command('help')) & filters.private)
 async def help_handler(bot, message):
-    if not await db.get_user(message.from_user.id):
-        await db.add_user(message.from_user.id)
-        await bot.send_message(
-            Telegram.ULOG_CHANNEL,
-            f"**#NᴇᴡUsᴇʀ**\n**⬩ ᴜsᴇʀ ɴᴀᴍᴇ :** [{message.from_user.first_name}](tg://user?id={message.from_user.id})\n**⬩ ᴜsᴇʀ ɪᴅ :** `{message.from_user.id}`"
-        )
     if Telegram.START_PIC:
         await message.reply_photo(
             photo=Telegram.START_PIC,
@@ -128,12 +116,6 @@ async def help_handler(bot, message):
 
 @FileStream.on_message(filters.command('files') & filters.private)
 async def my_files(bot: Client, message: Message):
-    if not await db.get_user(message.from_user.id):
-        await db.add_user(message.from_user.id)
-        await bot.send_message(
-            Telegram.ULOG_CHANNEL,
-            f"**#NᴇᴡUsᴇʀ**\n**⬩ ᴜsᴇʀ ɴᴀᴍᴇ :** [{message.from_user.first_name}](tg://user?id={message.from_user.id})\n**⬩ ᴜsᴇʀ ɪᴅ :** `{message.from_user.id}`"
-        )
     user_files, total_files = await db.find_files(message.from_user.id, [1, 10])
 
     file_list = []
