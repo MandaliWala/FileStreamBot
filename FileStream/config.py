@@ -11,7 +11,7 @@ class Telegram:
     WORKERS = int(env.get("WORKERS", "20"))  # 6 workers = 6 commands at once
     DATABASE_URL = str(env.get('DATABASE_URL'))
     UPDATES_CHANNEL = str(env.get('UPDATES_CHANNEL', "DigitalGalaxyHQ"))
-    SESSION_NAME = str(env.get('SESSION_NAME', 'FileStream'))
+    SESSION_NAME = str(env.get('SESSION_NAME', 'Cluster0'))
     FORCE_SUB_ID = env.get('FORCE_SUB_ID', "-1001946735467")
     FORCE_SUB = env.get('FORCE_UPDATES_CHANNEL', True)
     FORCE_SUB = True if str(FORCE_SUB).lower() == "true" else False
