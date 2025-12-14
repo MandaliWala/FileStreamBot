@@ -16,12 +16,6 @@ db = Database(Telegram.DATABASE_URL, Telegram.SESSION_NAME)
 
 @FileStream.on_message(filters.command('start') & filters.private)
 async def start(bot, message):
-    if not await db.get_user(message.from_user.id):
-        await db.add_user(message.from_user.id)
-        await bot.send_message(
-            Telegram.ULOG_CHANNEL,
-            f"**#NᴇᴡUsᴇʀ**\n**⬩ ᴜsᴇʀ ɴᴀᴍᴇ :** [{message.from_user.first_name}](tg://user?id={message.from_user.id})\n**⬩ ᴜsᴇʀ ɪᴅ :** `{message.from_user.id}`"
-        )
     usr_cmd = message.text.split("_")[-1]
 
     if usr_cmd == "/start":
