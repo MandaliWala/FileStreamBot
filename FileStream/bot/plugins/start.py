@@ -3,7 +3,7 @@ import math
 from FileStream import __version__
 from FileStream.bot import FileStream
 from FileStream.server.exceptions import FIleNotFound
-from FileStream.utils.bot_utils import gen_linkx
+from FileStream.utils.bot_utils import gen_linkx, verify_user
 from FileStream.config import Telegram
 from FileStream.utils.database import Database
 from FileStream.utils.translation import LANG, BUTTON
@@ -15,7 +15,9 @@ import asyncio
 db = Database(Telegram.DATABASE_URL, Telegram.SESSION_NAME)
 
 @FileStream.on_message(filters.command('start') & filters.private)
-async def start(bot, message):
+async def start(bot: Client, message: Message):
+    if not await verify_user(bot, message):
+        return
     usr_cmd = message.text.split("_")[-1]
 
     if usr_cmd == "/start":
@@ -80,7 +82,9 @@ async def start(bot, message):
             await message.reply_text(f"**Invalid Command**")
 
 @FileStream.on_message(filters.private & filters.command(["about"]))
-async def about_handler(bot, message):
+async def start(bot, message):
+    if not await verify_user(bot, message):
+        return
     if Telegram.START_PIC:
         await message.reply_photo(
             photo=Telegram.START_PIC,
@@ -97,6 +101,8 @@ async def about_handler(bot, message):
 
 @FileStream.on_message((filters.command('help')) & filters.private)
 async def help_handler(bot, message):
+    if not await verify_user(bot, message):
+        return
     if Telegram.START_PIC:
         await message.reply_photo(
             photo=Telegram.START_PIC,
@@ -116,6 +122,8 @@ async def help_handler(bot, message):
 
 @FileStream.on_message(filters.command('files') & filters.private)
 async def my_files(bot: Client, message: Message):
+    if not await verify_user(bot, message):
+        return
     user_files, total_files = await db.find_files(message.from_user.id, [1, 10])
 
     file_list = []
