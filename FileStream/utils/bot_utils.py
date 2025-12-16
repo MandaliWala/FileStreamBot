@@ -184,7 +184,7 @@ async def is_user_authorized(message):
 #---------------------[ USER EXIST ]---------------------#
 
 async def is_user_exist(bot, message):
-    if not await db.get_user(message.from_user.id):
+    if not bool(await db.get_user(message.from_user.id)):
         await db.add_user(message.from_user.id)
         await bot.send_message(
             Telegram.ULOG_CHANNEL,
