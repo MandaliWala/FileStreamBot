@@ -25,8 +25,8 @@ db = Database(Telegram.DATABASE_URL, Telegram.SESSION_NAME)
     group=4,
 )
 async def private_receive_handler(bot: Client, message: Message):
-    if not await is_user_authorized(message):
-        return
+#    if not await is_user_authorized(message):
+    #    return
     if await is_user_banned(message):
         return
 
