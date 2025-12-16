@@ -201,8 +201,8 @@ async def is_channel_exist(bot, message):
         )
 
 async def verify_user(bot, message):
-    if not await is_user_authorized(message):
-        return False
+  #  if not await is_user_authorized(message):
+   #     return False
 
     if await is_user_banned(message):
         return False
